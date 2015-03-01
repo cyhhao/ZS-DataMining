@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="zhusun_data"
+  id="myeclipse.1397387142049"
+  context-root="/zhusun_data"
+  j2ee-spec="6.0"
+  archive="zhusun_data.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
