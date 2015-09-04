@@ -1,0 +1,12 @@
+name: cyhpython
+version: 2
+
+libraries:
+
+- name: MySQLdb
+  version: "1.2.3"
+
+handlers:
+- url: /static
+  static_dir: ./mining/static
+

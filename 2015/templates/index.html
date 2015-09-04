@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>「五四评优」数据挖掘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://7xitbg.com1.z0.glb.clouddn.com/static/img/favicon.ico">
+    <link rel="stylesheet" href="http://7xitbg.com1.z0.glb.clouddn.com/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://7xitbg.com1.z0.glb.clouddn.com/static/css/jquery.fullPage.min.css">
+    <link rel="stylesheet" href="http://7xitbg.com1.z0.glb.clouddn.com/static/css/jquery.fs.boxer.min.css">
+    <link rel="stylesheet" href="/static/css/my.min.css">
+</head>
+<body>
+<style type="text/css">
+    h1,h2,h3,.body,div{
+        font-family: "微软雅黑";
+        color: #ffffff;
+    }
+    .myNav{
+        background-color: rgba(0, 0, 0, 0.0);
+        border-color: rgba(0, 0, 0, 0.0);
+        font-family: "微软雅黑";
+        font-size: medium;
+    }
+    .center{
+        text-align: center
+    }
+
+    .navbar-default .navbar-brand{
+        color: #ffffff;
+        font-size: larger;
+        padding: 10px 10px;
+    }
+    .navbar-default .navbar-nav>li>a:hover{
+        color: rgba(255, 255, 255, 0.53);
+    }
+    .navbar-default .navbar-nav > li > a {
+        color: #ffffff;
+    }
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+        color: #000;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    a:link,a:visited,a:hover {
+        color: #ffffff;
+        text-decoration:none;
+    }
+    a:hover{
+        color: #bebebe;
+    }
+    #boxer.mobile .boxer-meta { box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;}
+    .boxer-close{
+        margin-top: 20%;
+    }
+</style>
+<div class="container-fluid" >
+    <nav class="navbar navbar-default navbar-fixed-top myNav">
+        <div class="container-fluid" >
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" target="_blank" href="http://mp.weixin.qq.com/s?__biz=MjM5ODMyNzI4Ng==&mid=202534659&idx=1&sn=76f40dc72d155b0d5ae08007b1a945f5#rd">
+                    <img src="static/img/logo.png" style="height: 100%">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul id="myMenu" class="nav navbar-nav">
+                    <li class="active" data-menuanchor="Page1"><a href="#Page1">首页</a></li>
+                    <li data-menuanchor="Page2"><a href="#Page2" >总报表</a></li>
+                    <li data-menuanchor="Page3"><a href="#Page3" >女神榜</a></li>
+                    <li data-menuanchor="Page4"><a href="#Page4" >男神榜</a></li>
+                    <li data-menuanchor="Page5"><a href="#Page5" >人气榜</a></li>
+                    <li data-menuanchor="Page6"><a href="#Page6" >学霸榜</a></li>
+                    <li data-menuanchor="Page7"><a href="#Page7" >敬请期待</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+
+<div id="fullpage" class="" style="width: 100%">
+    <div class="section center container-fluid TopBackground" data-cyh-imge="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/firstBack.png">
+        <div class="row col-md-12 hidden-xs" style="font-size: 60px;text-align: center">
+            <img src="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/weixinlogo.png" style="width: 0px;height: 0px">
+            2015 <span style="font-weight:bolder; background: #f7fafe;color: #04508e">「五四评优」</span><br>
+            <span style="font-size: 90px;font-weight:bolder">数 据 挖 掘</span><br>
+            <span style="font-size: 20px">基于五四评优837条申报和16564条推荐评语数据挖掘</span>
+        </div>
+        <div class="row col-xs-12 visible-xs-block" style="font-size: 30px;text-align: center">
+            2015 <span style="font-weight:bolder; background: #f7fafe;color: #04508e">「五四评优」</span><br>
+            <span style="font-size: 45px;font-weight:bolder">数 据 挖 掘</span><br>
+            <span style="font-size: 20px">基于五四评优837条申报和16564条推荐评语数据挖掘</span><br><br>
+            <span style="font-size: 18px">电脑访问体验更优哦~</span>
+        </div>
+
+    </div>
+{#    汇总图表#}
+    <div class="section center container-fluid" style="background-color: #262626;">
+
+        <div class="row" style="margin-top: 50px">
+            <div id="keywords" class="col-md-6 col-md-12 echart" style="height: 300px;">
+            </div>
+            <div id="keywords2" class="col-md-6 col-md-12 echart" style="height: 300px;">
+            </div>
+            <div id="keywords3" class="col-md-6 col-md-12 echart" style="height: 300px;">
+            </div>
+            <div id="keywords4" class="col-md-6 col-md-12 echart" style="height: 300px;">
+            </div>
+        </div>
+
+    </div>
+
+
+    {% for top in tops %}
+    <div class="section center " style="background-color: #d0d300;">
+        {% for item in top.List %}
+        <div class="slide center  TopBackground" data-cyh-imge="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/{{ item.background }}">
+        <div class="container-fluid" style="width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.37);text-align: -webkit-auto;">
+            <!--大尺寸-->
+            <div class="row TopTitle">
+                <div class="col-md-12 hidden-xs">
+                    <span style="border-left: 5px solid #b0dbf7;padding-left: 20px">最具{{ top.name }}排行榜</span>
+                    <span class="TopNob">No.{{ item.no }}</span>
+                </div>
+            </div>
+            <!--小尺寸-->
+            <div class="row TopTitle visible-xs-block" style="font-size: 20px;">
+                <div class="col-xs-12">
+                    <span style="border-left: 5px solid #b0dbf7;padding-left: 20px">最具{{ top.name }}排行榜</span>
+                    <span class="TopNob" style="font-size:22px">No.{{ item.no }}</span>
+                </div>
+            </div>
+
+            <!--大尺寸-->
+            <div class="row TopName hidden-xs">
+                <div class="col-md-12">
+                <a href="http://my.nuaa.edu.cn/evaluation/index.php/apply/show/{{ item.id }}" target="_blank">{{ item.name }}</a>
+                </div>
+            </div>
+            <div class="row TopView hidden-xs">
+                <div class="col-md-12">
+                    <span class="Topico1" data-toggle="tooltip" data-placement="bottom" title="浏览量" >{{ item.pageview }}</span>
+                    <span class="Topico2" data-toggle="tooltip" data-placement="bottom" title="推荐数">{{ item.like }}</span>
+                </div>
+            </div>
+            <div class="row TopSay hidden-xs">
+                <div class="col-md-8 col-xs-8">
+                    {{ item.say }}
+                </div>
+            </div>
+            <!--小尺寸-->
+            <div class="row TopName visible-xs-block" style="font-size: 38px;">
+                <div class="col-xs-12" style="margin-top: 12px">
+                <a href="http://my.nuaa.edu.cn/evaluation/index.php/apply/show/{{ item.id }}" target="_blank">{{ item.name }}</a>
+                </div>
+            </div>
+            <div class="row TopView visible-xs-block" style="padding-top: 8px;">
+                <div class="col-xs-12">
+                    <span class="Topico1-sm" data-toggle="tooltip" data-placement="bottom" title="浏览量" >{{ item.pageview }}</span>
+                    <span class="Topico2-sm" data-toggle="tooltip" data-placement="bottom" title="推荐数">{{ item.like }}</span>
+                </div>
+            </div>
+            <div class="row TopSay visible-xs-block" style="font-size: 12px">
+                <div class="col-md-8 col-xs-8">
+                    {{ item.say }}
+                </div>
+            </div>
+
+
+            <div class="row TopOther">
+                <div class="col-md-12 col-xs-12">
+                    <div class="TopImg"><a class="boxer" title="{{ item.intro1 }}" rel="{{ item.id }}" href="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/{{ item.img1 }}"><img class="img"  src="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/{{ item.img1 }}?imageView2/1/w/200/h/100/q/60"></a></div>
+                    <div class="TopImg"><a class="boxer" title="{{ item.intro2 }}" rel="{{ item.id }}" href="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/{{ item.img2 }}"><img class="img"  src="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/{{ item.img2 }}?imageView2/1/w/200/h/100/q/60"></a></div>
+                    <div class="TopImg hidden-xs"><a class="boxer" title="{{ item.intro3 }}" rel="{{ item.id }}" href="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/{{ item.img3 }}"><img class="img"  src="http://7xitbg.com1.z0.glb.clouddn.com/mining/img/{{ item.img3 }}?imageView2/1/w/200/h/100/q/60"></a></div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+
+{#    <div class="section center" style="background-color: #008e14;">#}
+{#        <!--第三屏第1个-->#}
+{#        <div class="slide center container-fluid">#}
+{#            <div class="row" style="height: 20%">#}
+{#                <div style="font-size: 50px">aaaa</div>#}
+{#            </div>#}
+{#            <div class="row" style="height: 60%">#}
+{#                <div id="main" class="col-md-5 col-xs-6" style="height:100%;float: left;"></div>#}
+{#                <div id="main2" class="col-md-5 col-xs-6" style="height:100%;float: right">sss</div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!--第三屏第2个-->#}
+{#        <div class="slide container-fluid center" style="background-color: #398439">#}
+{#            第三屏的第三屏#}
+{#        </div>#}
+{#        <div class="slide">第三屏的第四屏</div>#}
+{#    </div>#}
+    <div class="section center container-fluid">
+        <h3>更多精彩，持续更新中，敬请期待</h3>
+        <div style="margin-bottom: 10px"><a target="_blank" href="http://mp.weixin.qq.com/s?__biz=MjM5ODMyNzI4Ng==&mid=202534659&idx=1&sn=76f40dc72d155b0d5ae08007b1a945f5">竹笋团队出品</a></div>
+
+    </div>
+</div>
+
+
+
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/jquery.min.js"></script>
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/bootstrap.min.js"></script>
+
+
+
+
+
+<!-- jquery.easings.min.js 用于 easing 参数，也可以使用完整的 jQuery UI 代替，如果不需要设置 easing 参数，可去掉改文件 -->
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/jquery.easings.min.js"></script>
+
+<!--&lt;!&ndash; 如果 scrollOverflow 设置为 true，则需要引入 jquery.slimscroll.min.js，一般情况下不需要 &ndash;&gt;-->
+<!--<script src="js/jquery.slimscroll.min.js"></script>-->
+
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/jquery.fullPage.min.js"></script>
+
+
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/jqthumb.min.js"></script>
+
+
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/jquery.fs.boxer.min.js"></script>
+
+
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/echarts/dist/echarts.js"></script>
+<script src="http://7xitbg.com1.z0.glb.clouddn.com/static/js/drawEcharts.min.js"></script>
+
+<script type="text/javascript">
+    var height=$(window).height();
+    var width=$(window).width();
+    $('.TopBackground').each(function(){
+        var s=""+$(this).attr("data-cyh-imge");
+        if(width<=768)
+            s+="?imageMogr2/thumbnail/"+width+"/gravity/NorthEast/crop/"+(width-50)+"x"+height+"/interlace/1";
+        else
+            s+="?imageMogr2/thumbnail/"+width+"x"+height+"/crop/x"+height+"/interlace/1";
+        $(this).css("background-image","url('"+s+"')");
+    });
+    var fullpage={
+        slidesNavigation: false,
+        sectionsColor: ['#04508e','#262626', 'rgb(3, 12, 26)', 'rgb(0, 211, 51)','rgb(0, 211, 51)', '#008e14', '#008e14'],
+        anchors: ['Page1', 'Page2','Page3', 'Page4', 'Page5', 'Page6','Page7'],
+        menu: '#myMenu',
+        controlArrowColor: 'rgba(255, 255, 255, 0.57)',
+        resize:true,
+        autoScrolling:false
+    };
+    if(width<=768){
+        $('.boxer').boxer({
+            mobile: true
+        });
+
+    }
+    else{
+        $('.boxer').boxer({
+            formatter:function(val){
+                var title = val.attr("title");
+                return '<span style="color:#000">'+title+"</span>";
+            },
+            'labels.close':"关闭"
+        });
+        fullpage['slidesNavigation']=true;
+        fullpage['resize']=true;
+        fullpage['autoScrolling']=true;
+        $('.echart').each(function(){
+            $(this).css('height',height/2.3);
+        });
+    }
+    $('#fullpage').fullpage(fullpage);
+
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+        $('.img').jqthumb({
+            width      : '200px',
+            height     : '100px',
+            display : 'inline-block'
+        });
+        drawChartA();
+
+    });
+
+
+</script>
+</body>
+</html>

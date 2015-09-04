@@ -1,0 +1,6 @@
+SELECT * FROM wusi_2015.mining_words_info2014 where property like 'a%' order by count desc;
+SELECT * FROM wusi_2015.mining_words_info where property like 'a%' order by count desc;
+
+
+SELECT * FROM wusi_2015.mining_words_comment2014 where property like 'a%' order by count desc;
+SELECT * FROM wusi_2015.mining_words_comment where property like 'a%' order by count desc;
